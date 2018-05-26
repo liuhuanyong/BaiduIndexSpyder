@@ -20,43 +20,42 @@ index_spyder.py:历史指数数据采集测试脚本
 # 历时数据的采集  
 目标：以‘中兴’为例，采集出从2011年至今的所有指数数据  
 实现：
-# index_spyder.py 
-from BaiduIndex import BaiduIndex  
-def demo():
-    # 用户的百度账号  
-    user_name = '××××××××'  
-    # 用户的百度账号密码    
-    password = '×××'  
-    # selenium调用chromepath，需要配置chrome主程序path  
-    chromepath = '/×××××××××/chromedriver'  
-    # 新建百度指数抓取实例，传入百度账号，密码以及chrome路径  
-    baidu = BaiduIndex(user_name, password, chromepath)  
-    # 将需要采集的关键词加入到keyword_list当中  
-    keyword_list = ['中兴']  
-    # 为了得到历时数据，需要按年去采集，包括两个方面：  
-    # 1）如果不以年去采集，得到的指数数据粒度为周平均，这与实际需求不符  
-    # 2）2012年与2016年比较特殊，需要分为上半年和下半年进行，这样才能得到以天为力度的指数数据  
-    date_dict = [  
-        ['2018', '2018-01-01', '2018-12-31'],  
-        ['2017', '2017-01-01', '2017-12-31'],  
-        ['201606', '2016-01-01', '2016-06-30'],  
-        ['201612', '2016-07-01', '2016-12-31'],  
-        ['2015', '2015-01-01', '2015-12-31'],  
-        ['2014', '2014-01-01', '2014-12-31'],  
-        ['2013', '2013-01-01', '2013-12-31'],  
-        ['201206', '2012-01-01', '2012-06-30'],  
-        ['201212', '2012-07-01', '2012-12-31'],  
-        ['2011', '2011-01-01', '2011-12-31']  
-        ]  
-    for keyword in keyword_list:  
-        # 以关键词为一个单元，在本地进行图片存储  
-        if not os.path.exists('%s'% keyword):  
-            os.mkdir('%s'%keyword)  
-        for date in date_dict:  
-            year = date[0]  
-            start_date = date[1]  
-            end_date = date[2]  
-            baidu.spider(year, keyword, start_date, end_date)
+# index_spyder.py
+    def demo():
+        # 用户的百度账号
+        user_name = '××××××××'
+        # 用户的百度账号密码
+        password = '×××'
+        # selenium调用chromepath，需要配置chrome主程序path
+        chromepath = '/×××××××××/chromedriver'
+        # 新建百度指数抓取实例，传入百度账号，密码以及chrome路径
+        baidu = BaiduIndex(user_name, password, chromepath)
+        # 将需要采集的关键词加入到keyword_list当中
+        keyword_list = ['中兴']
+        # 为了得到历时数据，需要按年去采集，包括两个方面：
+        # 1）如果不以年去采集，得到的指数数据粒度为周平均，这与实际需求不符
+        # 2）2012年与2016年比较特殊，需要分为上半年和下半年进行，这样才能得到以天为力度的指数数据
+        date_dict = [
+            ['2018', '2018-01-01', '2018-12-31'],
+            ['2017', '2017-01-01', '2017-12-31'],
+            ['201606', '2016-01-01', '2016-06-30'],
+            ['201612', '2016-07-01', '2016-12-31'],
+            ['2015', '2015-01-01', '2015-12-31'],
+            ['2014', '2014-01-01', '2014-12-31'],
+            ['2013', '2013-01-01', '2013-12-31'],
+            ['201206', '2012-01-01', '2012-06-30'],
+            ['201212', '2012-07-01', '2012-12-31'],
+            ['2011', '2011-01-01', '2011-12-31']
+            ]
+        for keyword in keyword_list:
+            # 以关键词为一个单元，在本地进行图片存储
+            if not os.path.exists('%s'% keyword):
+                os.mkdir('%s'%keyword)
+            for date in date_dict:
+                year = date[0]
+                start_date = date[1]
+                end_date = date[2]
+                baidu.spider(year, keyword, start_date, end_date)
 
 # 采集流程：
     def spider(self, year, word, start_date, end_date):
@@ -68,7 +67,7 @@ def demo():
         self.transwrite_image(year, word)
         print('step4, merge index..')
         self.merge_index(word)
-         
+
 # 运行实例  
 python index_spyder.py   
 
