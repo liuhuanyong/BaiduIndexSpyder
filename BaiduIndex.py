@@ -182,12 +182,12 @@ class BaiduIndex:
 
     '''采集主函数'''
     def spider(self, year, word, start_date, end_date):
-        # print('step1, spider data..')
-        # region_dict, date_dict = self.get_image(year, word, start_date, end_date)
-        # print('step2, deocde image..')
-        # self.decode_image(word, year, region_dict, date_dict)
-        # print('step3, transfer image..')
-        # self.transwrite_image(year, word)
+        print('step1, spider data..')
+        region_dict, date_dict = self.get_image(year, word, start_date, end_date)
+        print('step2, deocde image..')
+        self.decode_image(word, year, region_dict, date_dict)
+        print('step3, transfer image..')
+        self.transwrite_image(year, word)
         print('step4, merge index..')
         self.merge_index(word)
 

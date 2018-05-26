@@ -56,7 +56,19 @@ def demo():
             year = date[0]  
             start_date = date[1]  
             end_date = date[2]  
-            baidu.spider(year, keyword, start_date, end_date)  
+            baidu.spider(year, keyword, start_date, end_date)
+
+# 采集流程：
+    def spider(self, year, word, start_date, end_date):
+        print('step1, spider data..')
+        region_dict, date_dict = self.get_image(year, word, start_date, end_date)
+        print('step2, deocde image..')
+        self.decode_image(word, year, region_dict, date_dict)
+        print('step3, transfer image..')
+        self.transwrite_image(year, word)
+        print('step4, merge index..')
+        self.merge_index(word)
+         
 # 运行实例  
 python index_spyder.py   
 
