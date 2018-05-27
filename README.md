@@ -19,6 +19,8 @@ index_spyder.py:历史指数数据采集测试脚本
 中兴.txt:‘中兴’关键词的历史指数数据文件  
 # 历时数据的采集  
 目标：以‘中兴’为例，采集出从2011年至今的所有指数数据  
+![Image text](https://github.com/liuhuanyong/BaiduIndexSpyder/blob/master/img/zx_index_pre.png)
+
 实现：
 # index_spyder.py
     def demo():
@@ -96,6 +98,7 @@ date index_value
 2018-05-24	10314  
 2018-05-25	8044  
 
+![Image text](https://github.com/liuhuanyong/BaiduIndexSpyder/blob/master/img/zx_index_post.png)
 # 总结
 1、本项目接口只需要用户提供百度账户和密码，绕开验证码输入入口，减少人工干预  
 2、本项目采用的方式是构造指数数据请求，讲请求到的数据指纹进行解码拼接，与指数图片滑动截屏不同，可以提高准确率与速度。以本项目为例，从采集到转换，8年的数据采集大约花费20分钟左右。速度方面提升方法：没采集一个指纹需要进行timesleep(seconds),可缩小seconds的值加快速度，本示例采用的是time.sleep(random.uniform(0,1))  
